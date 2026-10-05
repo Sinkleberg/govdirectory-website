@@ -19,7 +19,7 @@ function git_list_files() {
 		HEAD
 }
 
-IGNORE_PATTERN='\.css$\|\.js$\|\.rq$\|\.svg$\|\.webp$\|\.ico$\|\.png$\|\.jpg$\|\.ttf$\|\.woff$\|\.woff2$\|\.json$\|CNAME$\|Gemfile$\|LICENSE$\|\.sh$\|\.gitignore$\|.github.*\|jargon.txt$'
+IGNORE_PATTERN='\.css$\|\.js$\|\.py$\|\.rq$\|\.svg$\|\.webp$\|\.ico$\|\.png$\|\.jpg$\|\.ttf$\|\.woff$\|\.woff2$\|\.json$\|CNAME$\|Gemfile$\|LICENSE$\|\.sh$\|\.gitignore$\|.github.*\|jargon.txt$'
 
 ERRORS=0
 for FILE in $(git_list_files | grep --invert-match $IGNORE_PATTERN); do
