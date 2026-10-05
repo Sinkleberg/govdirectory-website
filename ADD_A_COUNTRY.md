@@ -58,7 +58,7 @@ WHERE {
 
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en,mul,sv" }
 }
-ORDER BY ?type ?orgLabel
+ORDER BY ?type LCASE(STR(?orgLabel))
 ```
 
 Now Let's go through the parts one likely want to adapt to the country one wants to add.
@@ -118,8 +118,12 @@ Note that even with these changes in place one's query might still need addition
 Finally, make sure to give a decent sort order of the agencies. This may vary by country, but a decent start may be to order be type and then label.
 
 ```sparql
-  ORDER BY ?type ?orgLabel
+  ORDER BY ?type LCASE(STR(?orgLabel))
 ```
+
+Use `LCASE(STR(...))` when sorting labels so capitalization and language tags do not separate otherwise alphabetical names. Keep the existing type grouping and direction for the country. This is case-insensitive ordering, not language-specific collation.
+
+To check the ordering offline with synthetic data, install [RDFLib](https://rdflib.readthedocs.io/) in a Python virtual environment (`python -m pip install "rdflib>=7.1,<8"`), then run `python scripts/tests/test-query-order.py` from the repository root. The tests check the country queries and the agency examples above without contacting Wikidata.
 
 Note that one can test the query in the Wikidata Query Service. One can also find more examples of [country queries here](https://github.com/govdirectory/website/tree/main/queries).
 
