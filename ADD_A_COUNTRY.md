@@ -123,9 +123,9 @@ Finally, make sure to give a decent sort order of the agencies. This may vary by
 
 Use `LCASE(STR(...))` when sorting labels so capitalization and language tags do not separate otherwise alphabetical names. Keep the existing type grouping and direction for the country. This is case-insensitive ordering, not language-specific collation.
 
-To check the ordering offline with synthetic data, install [RDFLib](https://rdflib.readthedocs.io/) in a Python virtual environment (`python -m pip install "rdflib>=7.1,<8"`), then run `python scripts/tests/test-query-order.py` from the repository root. The tests check the country queries and the agency examples above without contacting Wikidata.
+Run your country query in the [Wikidata Query Service](https://query.wikidata.org/) and check that agency names appear in alphabetical order within each type group, ignoring capitalization. Check that the type groups still follow the intended order for the country. This uses the actual query results and requires no local installation.
 
-Note that one can test the query in the Wikidata Query Service. One can also find more examples of [country queries here](https://github.com/govdirectory/website/tree/main/queries).
+One can also find more examples of [country queries here](https://github.com/govdirectory/website/tree/main/queries).
 
 ### The country configuration
 

@@ -212,7 +212,6 @@ publiccodeYmlVersion
 qid
 queryable
 rd
-RDFLib
 README
 Readme
 readme
